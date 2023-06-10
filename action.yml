@@ -3,3 +3,7 @@ description: Create major and minor git tags from the last tag
 runs:
   using: node16
   main: index.js
+inputs:
+  version:
+    required: true
+    description: 'version'
