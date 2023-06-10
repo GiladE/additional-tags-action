@@ -9,12 +9,12 @@ try {
 
   if (!tag) {
     // Nothing to do
-  } else if (!/^v\d+\.\d+\.\d+$/.test(tag)) {
+  } else if (!/^\d+\.\d+\.\d+$/.test(tag)) {
     console.log('Skipping tag %s', tag)
   } else {
     const [major, minor] = tag.slice(1).split('.')
-    const majorTag = 'v' + major
-    const minorTag = 'v' + major + '.' + minor
+    const majorTag = major
+    const minorTag = major + '.' + minor
 
     execFileSync('git', ['config', 'user.name', 'github-actions'])
     execFileSync('git', ['config', 'user.email', 'github-actions@github.com'])
