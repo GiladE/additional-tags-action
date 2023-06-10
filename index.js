@@ -1,11 +1,12 @@
 'use strict'
 
 const { execFileSync } = require('child_process')
+const core = require('@actions/core');
+
 
 try {
   const maxBuffer = 1024 * 1024 * 16
-  const tags = execFileSync('git', ['tag'], { maxBuffer, encoding: 'utf8' })
-  const tag = tags.split(/\r?\n/).filter(Boolean).pop()
+  const tag = core.getInput('version')
 
   if (!tag) {
     // Nothing to do
